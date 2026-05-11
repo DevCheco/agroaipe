@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgroAipe - Marketplace multivendor que conecta agricultores de Aipe, Huila, directamente con consumidores. Compra arroz, café, frutas y más sin intermediarios.">
+  <title>AgroAipe — Marketplace Campesino de Aipe, Huila</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" id="logo-link">
+        <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+        <div>
+          <span class="logo-text">AgroAipe</span>
+          <span class="logo-sub">Aipe · Huila · Colombia</span>
+        </div>
+      </a>
+
+      <div class="search-wrap" role="search">
+        <input type="text" id="search-input" placeholder="Buscar productos, productores…" aria-label="Buscar productos">
+        <button id="search-btn" aria-label="Buscar">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-cart" id="cart-btn" aria-label="Ver carrito de compras">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.1 5H19M7 13v5a2 2 0 002 2h6a2 2 0 002-2v-5"/></svg>
+          Carrito
+          <span class="cart-badge" id="cart-count" aria-live="polite">0</span>
+        </button>
+        <div class="profile-dropdown">
+          <button class="btn-profile" id="profile-btn" aria-haspopup="true" aria-expanded="false">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            Mi Cuenta
+          </button>
+          <div class="dropdown-menu" id="profile-menu" role="menu">
+           
+            <a href="#" id="login-btn" role="menuitem"><i class="fa-solid fa-lock"></i> Iniciar Sesión Productor</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-hamburger" id="mobile-menu-btn" aria-label="Abrir menú móvil" aria-expanded="false">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer" id="mobile-drawer" aria-label="Menú móvil">
+    <div class="drawer-header">
+      <span style="font-weight:700;font-size:1.1rem;color:var(--green-deep)"><i class="fa-solid fa-leaf"></i> AgroAipe</span>
+      <button class="btn-close" id="close-drawer" aria-label="Cerrar menú">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-search">
+        <input type="text" id="mobile-search" placeholder="Buscar productos…" aria-label="Buscar">
+        <button aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="#"><i class="fa-solid fa-tractor"></i> Panel Productor</a>
+        <a href="#" id="mobile-login-btn"><i class="fa-solid fa-lock"></i> Iniciar Sesión</a>
+      </nav>
+      <button class="drawer-cart-btn" id="mobile-cart-btn"><i class="fa-solid fa-cart-shopping"></i> Ver Carrito (<span id="mobile-cart-count">0</span>)</button>
+    </div>
+  </aside>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-leaf"></i> Del campo a tu mesa — Sin intermediarios</div>
+      <h1 id="hero-title">El mercado campesino<br>de <em>Aipe, Huila</em></h1>
+      <p>Conectamos agricultores locales directamente con compradores. Productos frescos, precios justos y apoyo a la economía rural.</p>
+      <button class="hero-cta" id="hero-cta-btn">
+        Ver todos los productos
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-layout">
+
+    <!-- SIDEBAR FILTROS -->
+    <aside class="sidebar" aria-label="Filtros de productos">
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">Filtrar por zona</h2>
+        <div class="filter-list" id="filter-list" role="group" aria-label="Filtros de zona">
+          <button class="filter-btn active" data-category="all" id="filter-all">
+            <span class="filter-icon"><i class="fa-solid fa-map"></i></span> Todos los productos
+            <span class="filter-count" id="count-all">10</span>
+          </button>
+          <button class="filter-btn" data-category="zona-baja" id="filter-zona-baja">
+            <span class="filter-icon"><i class="fa-solid fa-water"></i></span> Zona Baja (Riego)
+            <span class="filter-count" id="count-zona-baja">3</span>
+          </button>
+          <button class="filter-btn" data-category="montana" id="filter-montana">
+            <span class="filter-icon"><i class="fa-solid fa-mountain-sun"></i></span> Zona de Montaña
+            <span class="filter-count" id="count-montana">3</span>
+          </button>
+          <button class="filter-btn" data-category="piscicultura" id="filter-piscicultura">
+            <span class="filter-icon"><i class="fa-solid fa-fish"></i></span> Piscicultura
+            <span class="filter-count" id="count-piscicultura">2</span>
+          </button>
+          <button class="filter-btn" data-category="frutales" id="filter-frutales">
+            <span class="filter-icon"><i class="fa-solid fa-lemon"></i></span> Frutales
+            <span class="filter-count" id="count-frutales">2</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h2 class="sidebar-title">¿Eres productor?</h2>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Publica tus productos y llega directamente a los consumidores sin intermediarios.</p>
+        <button class="btn-add" id="become-seller-btn"><i class="fa-solid fa-seedling"></i> Registrarme como productor</button>
+      </div>
+    </aside>
+
+    <!-- CATÁLOGO -->
+    <main id="main-catalog" aria-label="Catálogo de productos">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" id="catalog-title">Productos Destacados</h2>
+          <p class="section-subtitle" id="catalog-subtitle">Mostrando todos los productos de Aipe</p>
+        </div>
+        <select class="sort-select" id="sort-select" aria-label="Ordenar productos">
+          <option value="default">Ordenar por…</option>
+          <option value="price-asc">Menor precio</option>
+          <option value="price-desc">Mayor precio</option>
+          <option value="name">Nombre A-Z</option>
+        </select>
+      </div>
+      <div class="product-grid" id="product-grid" aria-label="Grilla de productos">
+        <!-- Productos generados por JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- IMPACTO SOCIAL -->
+  <section class="impact-section" aria-labelledby="impact-title">
+    <div class="impact-card">
+      <h2 class="impact-title" id="impact-title">🌱 Impacto Social en Aipe</h2>
+      <p class="impact-sub">Cada compra apoya directamente a las familias campesinas de nuestra región.</p>
+      <div class="impact-grid">
+        <div class="impact-stat">
+          <span class="stat-number" data-target="50">0</span>
+          <span class="stat-label">+ Familias Beneficiadas</span>
+        </div>
+        <div class="impact-stat">
+          <span class="stat-number" data-target="100">0</span>
+          <span class="stat-label">% Venta Directa sin Intermediarios</span>
+        </div>
+        <div class="impact-stat">
+          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-label">kg Vendidos Mensualmente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <strong>AgroAipe</strong> — Hecho con ❤️ en <strong>Aipe, Huila, Colombia</strong>. Apoyando al campesino colombiano.</p>
+  </footer>
+
+  <!-- MODAL LOGIN -->
+  <div class="modal-overlay" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="login-modal-title"><i class="fa-solid fa-lock"></i> Iniciar sesión Productor</h3>
+        <button class="btn-close" id="close-login" aria-label="Cerrar modal">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="login-email">Correo electrónico *</label>
+        <input class="form-input" type="email" id="login-email" placeholder="correo@ejemplo.com" autocomplete="username">
+        <span class="form-error" id="err-login-email"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-password">Contraseña *</label>
+        <div class="input-password-wrap">
+          <input class="form-input" type="password" id="login-password" placeholder="Ingresa tu contraseña" autocomplete="current-password">
+          <button type="button" class="btn-show-pass" id="toggle-login-pass" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <span class="form-error" id="err-login-password"></span>
+      </div>
+      <button class="btn-next-step" id="btn-login-submit">Iniciar sesión</button>
+      <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-muted)">¿No tienes cuenta? <a href="#" id="open-register-from-login">Regístrate como productor</a>.</p>
+    </div>
+  </div>
+
+  <!-- MODAL REGISTRO -->
+  <div class="modal-overlay" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+    <div class="modal-box register-box">
+      <div class="modal-header">
+        <div>
+          <div class="register-step-indicator" id="register-step-indicator">Paso 1 de 2</div>
+          <h3 class="modal-title" id="register-modal-title"><i class="fa-solid fa-pen-to-square"></i> Registro de Productor</h3>
+        </div>
+        <button class="btn-close" id="close-register" aria-label="Cerrar registro">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Paso 1: Datos comunes -->
+      <div id="reg-step-1" class="reg-step">
+        <div class="reg-role-badge amber-badge" id="reg-role-badge"><i class="fa-solid fa-tractor"></i> Productor</div>
+        <div class="form-group">
+          <label class="form-label" for="reg-nombre">Nombre completo *</label>
+          <input class="form-input" type="text" id="reg-nombre" placeholder="Ej: Juan Pérez" autocomplete="name">
+          <span class="form-error" id="err-nombre"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Correo electrónico *</label>
+          <input class="form-input" type="email" id="reg-email" placeholder="correo@ejemplo.com" autocomplete="email">
+          <span class="form-error" id="err-email"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-tel">Teléfono / WhatsApp *</label>
+          <input class="form-input" type="tel" id="reg-tel" placeholder="3XX XXX XXXX" autocomplete="tel">
+          <span class="form-error" id="err-tel"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Contraseña *</label>
+          <div class="input-password-wrap">
+            <input class="form-input" type="password" id="reg-password" placeholder="Mínimo 6 caracteres">
+            <button type="button" class="btn-show-pass" id="toggle-pass" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <span class="form-error" id="err-password"></span>
+        </div>
+        <button class="btn-next-step" id="btn-step1-next">Siguiente →</button>
+      </div>
+
+      <!-- Paso 2: Datos específicos del productor -->
+      <div id="reg-step-2" class="reg-step hidden">
+        <div id="reg-productor-fields">
+          <p class="reg-section-title">🌱 Información de tu finca</p>
+          <div class="form-group">
+            <label class="form-label" for="reg-finca">Nombre de la finca o asociación *</label>
+            <input class="form-input" type="text" id="reg-finca" placeholder="Ej: Finca El Recreo">
+            <span class="form-error" id="err-finca"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-vereda">Vereda / Zona *</label>
+            <select class="form-input" id="reg-vereda">
+              <option value="">Seleccionar zona…</option>
+              <option value="zona-baja">Zona Baja (Riego)</option>
+              <option value="montana">Zona de Montaña</option>
+              <option value="piscicultura">Piscicultura</option>
+              <option value="frutales">Frutales</option>
+            </select>
+            <span class="form-error" id="err-vereda"></span>
+          </div>
+          <div class="form-group hidden-section">
+            <label class="form-label">Productos que ofreces</label>
+            <div class="product-note">
+              <i class="fa-solid fa-leaf"></i> Todos los productores registrados gestionan el mismo catálogo de 10 productos disponibles en AgroAipe.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-hectareas">Hectáreas cultivadas (aprox.)</label>
+            <input class="form-input" type="number" id="reg-hectareas" min="0" step="0.5" placeholder="Ej: 2.5">
+          </div>
+        </div>
+        <div class="reg-step2-actions">
+          <button class="btn-back-step" id="btn-step2-back">← Atrás</button>
+          <button class="btn-register-submit" id="btn-register-submit">Registrarme <i class="fa-solid fa-circle-check"></i></button>
+        </div>
+      </div>
+
+      <!-- Paso 3: Éxito -->
+      <div id="reg-step-success" class="reg-step hidden">
+        <div class="reg-success">
+          <div class="success-icon"><i class="fa-solid fa-party-horn"></i></div>
+          <h4 class="success-title" id="success-title">¡Registro exitoso!</h4>
+          <p class="success-msg" id="success-msg">Bienvenido a AgroAipe. Tu cuenta ha sido creada.</p>
+          <div class="success-summary" id="success-summary"></div>
+          <button class="btn-register-submit" id="btn-close-success">Ir al marketplace →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CARRITO -->
+  <div class="modal-overlay" id="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
+    <div class="modal-box" style="max-width:500px">
+      <div class="modal-header">
+        <h3 class="modal-title" id="cart-modal-title"><i class="fa-solid fa-cart-shopping"></i> Carrito de Compras</h3>
+        <button class="btn-close" id="close-cart" aria-label="Cerrar carrito">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="cart-items-list" id="cart-items" aria-live="polite">
+        <!-- generado por JS -->
+      </div>
+      <div id="cart-footer">
+        <!-- total + checkout generado por JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive">
+    <span id="toast-icon"><i class="fa-solid fa-circle-check"></i></span>
+    <span id="toast-msg">Mensaje</span>
+  </div>
+
+  <!-- MODAL CHECKOUT COMPRADOR -->
+  <div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+    <div class="modal-box register-box">
+      <div class="modal-header">
+        <div>
+          <div class="register-step-indicator" id="checkout-step-label">Datos de entrega</div>
+          <h3 class="modal-title" id="checkout-modal-title"><i class="fa-solid fa-box-open"></i> Finalizar Pedido</h3>
+        </div>
+        <button class="btn-close" id="close-checkout" aria-label="Cerrar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Formulario de entrega -->
+      <div id="checkout-form-step">
+        <div class="checkout-summary-mini" id="checkout-summary-mini"></div>
+        <div class="form-group">
+          <label class="form-label" for="co-nombre">Nombre completo *</label>
+          <input class="form-input" type="text" id="co-nombre" placeholder="Ej: María García" autocomplete="off">
+          <span class="form-error" id="co-err-nombre"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="co-tel">Teléfono / WhatsApp *</label>
+          <input class="form-input" type="tel" id="co-tel" placeholder="3XX XXX XXXX" autocomplete="off">
+          <span class="form-error" id="co-err-tel"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="co-municipio">Municipio *</label>
+          <input class="form-input" type="text" id="co-municipio" placeholder="Ej: Aipe, Neiva…" autocomplete="off">
+          <span class="form-error" id="co-err-municipio"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="co-direccion">Dirección de entrega *</label>
+          <input class="form-input" type="text" id="co-direccion" placeholder="Calle, barrio o vereda" autocomplete="off">
+          <span class="form-error" id="co-err-direccion"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="co-pago">Método de pago *</label>
+          <select class="form-input" id="co-pago">
+            <option value="">Seleccionar…</option>
+            <option value="transferencia">Transferencia bancaria</option>
+            <option value="contraentrega">Contra entrega</option>
+          </select>
+          <span class="form-error" id="co-err-pago"></span>
+        </div>
+        <button class="btn-next-step" id="btn-confirm-order">Confirmar pedido <i class="fa-solid fa-circle-check"></i></button>
+      </div>
+
+      <!-- Éxito del pedido -->
+      <div id="checkout-success-step" class="hidden">
+        <div class="reg-success">
+          <div class="success-icon"><i class="fa-solid fa-party-horn"></i></div>
+          <h4 class="success-title">¡Pedido confirmado!</h4>
+          <p class="success-msg">Pronto un productor de Aipe se pondrá en contacto contigo para coordinar la entrega.</p>
+          <div class="success-summary" id="checkout-success-summary"></div>
+          <button class="btn-register-submit" id="btn-close-checkout-success">Volver al marketplace →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PANEL PRODUCTOR -->
+  <div class="modal-overlay" id="producer-panel-modal" role="dialog" aria-modal="true" aria-labelledby="producer-panel-title">
+    <div class="modal-box producer-panel-box">
+      <div class="modal-header">
+        <div>
+          <div class="register-step-indicator"><i class="fa-solid fa-tractor"></i> Panel del Productor</div>
+          <h3 class="modal-title" id="producer-panel-title">Bienvenido a tu panel</h3>
+        </div>
+        <button class="btn-close" id="close-producer-panel" aria-label="Cerrar panel">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="producer-info-bar" id="producer-info-bar"></div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Estos son los productos disponibles en el marketplace. Como productor registrado, eres parte de este catálogo.</p>
+      <div class="producer-product-list" id="producer-product-list"></div>
+      <button class="btn-next-step" style="margin-top:16px" id="close-producer-panel-btn">Cerrar panel</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
